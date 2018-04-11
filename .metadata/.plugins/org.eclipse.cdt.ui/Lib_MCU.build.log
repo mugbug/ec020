@@ -1,0 +1,6 @@
+20:54:52 **** Incremental Build of configuration Debug for project Lib_MCU ****
+make -r all 
+src/lpc17xx_adc.d:1: *** multiple target patterns.  Stop.
+
+20:54:53 Build Finished (took 359ms)
+

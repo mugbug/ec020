@@ -1,45 +1,46 @@
-src/biblioteca.d: ../src/biblioteca.c ../src/biblioteca.h \
- C:\Users\aluno.SERVIDORES\Documents\LPCXpresso_6.1.4_194\workspace\projeto1\Lib_MCU\inc/lpc17xx_ssp.h \
- C:\Users\aluno.SERVIDORES\Documents\LPCXpresso_6.1.4_194\workspace\projeto1\Lib_CMSISv1p30_LPC17xx\inc/LPC17xx.h \
- C:\Users\aluno.SERVIDORES\Documents\LPCXpresso_6.1.4_194\workspace\projeto1\Lib_CMSISv1p30_LPC17xx\inc/core_cm3.h \
- C:\Users\aluno.SERVIDORES\Documents\LPCXpresso_6.1.4_194\workspace\projeto1\Lib_CMSISv1p30_LPC17xx\inc/system_LPC17xx.h \
- C:\Users\aluno.SERVIDORES\Documents\LPCXpresso_6.1.4_194\workspace\projeto1\Lib_MCU\inc/lpc_types.h \
- C:\Users\aluno.SERVIDORES\Documents\LPCXpresso_6.1.4_194\workspace\projeto1\Lib_MCU\inc/lpc17xx_pinsel.h \
- C:\Users\aluno.SERVIDORES\Documents\LPCXpresso_6.1.4_194\workspace\projeto1\Lib_MCU\inc/lpc17xx_uart.h \
- C:\Users\aluno.SERVIDORES\Documents\LPCXpresso_6.1.4_194\workspace\projeto1\Lib_MCU\inc/lpc17xx_i2c.h \
- C:\Users\aluno.SERVIDORES\Documents\LPCXpresso_6.1.4_194\workspace\projeto1\Lib_MCU\inc/lpc17xx_timer.h \
- C:\Users\aluno.SERVIDORES\Documents\LPCXpresso_6.1.4_194\workspace\projeto1\Lib_MCU\inc/lpc17xx_gpio.h \
- C:\Users\aluno.SERVIDORES\Documents\LPCXpresso_6.1.4_194\workspace\projeto1\Lib_EaBaseBoard\inc/light.h \
- C:\Users\aluno.SERVIDORES\Documents\LPCXpresso_6.1.4_194\workspace\projeto1\Lib_EaBaseBoard\inc/oled.h \
- C:\Users\aluno.SERVIDORES\Documents\LPCXpresso_6.1.4_194\workspace\projeto1\Lib_EaBaseBoard\inc/uart2.h \
+src/biblioteca.o src/biblioteca.d: ../src/biblioteca.c \
+ ../src/biblioteca.h \
+ /home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_MCU/inc/lpc17xx_ssp.h \
+ /home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_CMSISv1p30_LPC17xx/inc/LPC17xx.h \
+ /home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_CMSISv1p30_LPC17xx/inc/core_cm3.h \
+ /home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_CMSISv1p30_LPC17xx/inc/system_LPC17xx.h \
+ /home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_MCU/inc/lpc_types.h \
+ /home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_MCU/inc/lpc17xx_pinsel.h \
+ /home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_MCU/inc/lpc17xx_uart.h \
+ /home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_MCU/inc/lpc17xx_i2c.h \
+ /home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_MCU/inc/lpc17xx_timer.h \
+ /home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_MCU/inc/lpc17xx_gpio.h \
+ /home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_EaBaseBoard/inc/light.h \
+ /home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_EaBaseBoard/inc/oled.h \
+ /home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_EaBaseBoard/inc/uart2.h \
  ../src/tcpip.h
 
 ../src/biblioteca.h:
 
-C:\Users\aluno.SERVIDORES\Documents\LPCXpresso_6.1.4_194\workspace\projeto1\Lib_MCU\inc/lpc17xx_ssp.h:
+/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_MCU/inc/lpc17xx_ssp.h:
 
-C:\Users\aluno.SERVIDORES\Documents\LPCXpresso_6.1.4_194\workspace\projeto1\Lib_CMSISv1p30_LPC17xx\inc/LPC17xx.h:
+/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_CMSISv1p30_LPC17xx/inc/LPC17xx.h:
 
-C:\Users\aluno.SERVIDORES\Documents\LPCXpresso_6.1.4_194\workspace\projeto1\Lib_CMSISv1p30_LPC17xx\inc/core_cm3.h:
+/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_CMSISv1p30_LPC17xx/inc/core_cm3.h:
 
-C:\Users\aluno.SERVIDORES\Documents\LPCXpresso_6.1.4_194\workspace\projeto1\Lib_CMSISv1p30_LPC17xx\inc/system_LPC17xx.h:
+/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_CMSISv1p30_LPC17xx/inc/system_LPC17xx.h:
 
-C:\Users\aluno.SERVIDORES\Documents\LPCXpresso_6.1.4_194\workspace\projeto1\Lib_MCU\inc/lpc_types.h:
+/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_MCU/inc/lpc_types.h:
 
-C:\Users\aluno.SERVIDORES\Documents\LPCXpresso_6.1.4_194\workspace\projeto1\Lib_MCU\inc/lpc17xx_pinsel.h:
+/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_MCU/inc/lpc17xx_pinsel.h:
 
-C:\Users\aluno.SERVIDORES\Documents\LPCXpresso_6.1.4_194\workspace\projeto1\Lib_MCU\inc/lpc17xx_uart.h:
+/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_MCU/inc/lpc17xx_uart.h:
 
-C:\Users\aluno.SERVIDORES\Documents\LPCXpresso_6.1.4_194\workspace\projeto1\Lib_MCU\inc/lpc17xx_i2c.h:
+/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_MCU/inc/lpc17xx_i2c.h:
 
-C:\Users\aluno.SERVIDORES\Documents\LPCXpresso_6.1.4_194\workspace\projeto1\Lib_MCU\inc/lpc17xx_timer.h:
+/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_MCU/inc/lpc17xx_timer.h:
 
-C:\Users\aluno.SERVIDORES\Documents\LPCXpresso_6.1.4_194\workspace\projeto1\Lib_MCU\inc/lpc17xx_gpio.h:
+/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_MCU/inc/lpc17xx_gpio.h:
 
-C:\Users\aluno.SERVIDORES\Documents\LPCXpresso_6.1.4_194\workspace\projeto1\Lib_EaBaseBoard\inc/light.h:
+/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_EaBaseBoard/inc/light.h:
 
-C:\Users\aluno.SERVIDORES\Documents\LPCXpresso_6.1.4_194\workspace\projeto1\Lib_EaBaseBoard\inc/oled.h:
+/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_EaBaseBoard/inc/oled.h:
 
-C:\Users\aluno.SERVIDORES\Documents\LPCXpresso_6.1.4_194\workspace\projeto1\Lib_EaBaseBoard\inc/uart2.h:
+/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_EaBaseBoard/inc/uart2.h:
 
 ../src/tcpip.h:

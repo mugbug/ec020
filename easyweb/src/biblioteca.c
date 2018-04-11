@@ -84,10 +84,11 @@ void print_disp(uint8_t op, uint32_t minL, uint32_t maxL) {
 	oled_clearScreen(OLED_COLOR_BLACK);
 
 	if (op) {
-		oled_putString(1, 1, (uint8_t*) "EC-202", OLED_COLOR_WHITE,
+		oled_putString(1, 1, (uint8_t*) "EC-020", OLED_COLOR_WHITE,
 				OLED_COLOR_BLACK);
-		oled_putString(1, 17, (uint8_t*) "xxx,969,981", OLED_COLOR_WHITE,
+		oled_putString(1, 17, (uint8_t*) "1137, 1020, 982, 1045", OLED_COLOR_WHITE,
 				OLED_COLOR_BLACK);
+
 		oled_putString(1, 34, (uint8_t*) "IP Address:", OLED_COLOR_WHITE,
 				OLED_COLOR_BLACK);
 
@@ -112,7 +113,7 @@ void print_uart(uint8_t op) {
 		UART_SendString(UART_DEV, (uint8_t*) "1 - Info\r\n");
 		UART_SendString(UART_DEV, (uint8_t*) "2 - Encerrar a aplicacao\r\n");
 	} else if (op) {
-		UART_SendString(UART_DEV, (uint8_t*) "\n\n\rProjeto de EC - 202\r\n");
+		UART_SendString(UART_DEV, (uint8_t*) "\n\n\rProjeto de EC - 020\r\n");
 		UART_SendString(UART_DEV,
 				(uint8_t*) "Aplicacao desenvolvida em super-loop\r\n");
 		UART_SendString(UART_DEV,

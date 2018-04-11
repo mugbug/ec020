@@ -1,0 +1,6 @@
+20:54:57 **** Incremental Build of configuration Debug for project easyweb ****
+make -r all 
+make: Nothing to be done for 'all'.
+
+20:54:57 Build Finished (took 408ms)
+

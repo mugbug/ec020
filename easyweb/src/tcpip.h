@@ -32,7 +32,7 @@
 #define GWIP_1               192                 // standard gateway (used if remote
 #define GWIP_2               168                 // IP is no part of our subnet)
 #define GWIP_3               5
-#define GWIP_4               238
+#define GWIP_4               1
 
 #define RETRY_TIMEOUT        8                   // wait max. 8 x 262ms for an ACK (about 2 sec.)
 #define FIN_TIMEOUT          2                   // max. time to wait for an ACK of a FIN

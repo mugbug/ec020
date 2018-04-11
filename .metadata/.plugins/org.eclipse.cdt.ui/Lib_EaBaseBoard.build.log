@@ -1,0 +1,6 @@
+20:54:54 **** Incremental Build of configuration Debug for project Lib_EaBaseBoard ****
+make -r all 
+src/acc.d:1: *** multiple target patterns.  Stop.
+
+20:54:54 Build Finished (took 410ms)
+
