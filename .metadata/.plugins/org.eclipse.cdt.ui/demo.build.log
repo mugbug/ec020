@@ -1,0 +1,12 @@
+15:56:20 **** Incremental Build of configuration Debug for project demo ****
+make -r all 
+Building target: demo.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -L"/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_CMSISv1p30_LPC17xx/Debug" -L"/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_EaBaseBoard/Debug" -L"/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_MCU/Debug" -Xlinker --gc-sections -Xlinker -Map=demo.map -mcpu=cortex-m3 -mthumb -T "rdb1768cmsis_uart_Debug.ld" -o "demo.axf"  ./src/cr_startup_lpc17.o ./src/main.o   -lCMSISv1p30_LPC17xx -lLib_EaBaseBoard -lLib_MCU
+/usr/local/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/bin/ld: cannot find -lCMSISv1p30_LPC17xx
+collect2: error: ld returned 1 exit status
+makefile:30: recipe for target 'demo.axf' failed
+make: *** [demo.axf] Error 1
+
+15:56:20 Build Finished (took 407ms)
+

@@ -1,6 +1,97 @@
-20:54:57 **** Incremental Build of configuration Debug for project easyweb ****
+15:53:53 **** Build of configuration Debug for project easyweb ****
 make -r all 
-make: Nothing to be done for 'all'.
+Building file: ../src/biblioteca.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DDEBUG -D__USE_CMSIS=CMSISv1p30_LPC17xx -D__CODE_RED -D__NEWLIB__ -I"/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_CMSISv1p30_LPC17xx/inc" -I"/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_EaBaseBoard/inc" -I"/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_MCU/inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -mcpu=cortex-m3 -mthumb -D__NEWLIB__ -MMD -MP -MF"src/biblioteca.d" -MT"src/biblioteca.o" -MT"src/biblioteca.d" -o "src/biblioteca.o" "../src/biblioteca.c"
+../src/biblioteca.c: In function 'print_disp':
+../src/biblioteca.c:72:3: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+   sprintf((char*) buf, " %d.%d.%d.%d", MYIP_1, MYIP_2, MYIP_3, MYIP_4);
+   ^
+../src/biblioteca.c: At top level:
+../src/biblioteca.c:39:13: warning: 'init_i2c' defined but not used [-Wunused-function]
+ static void init_i2c(void) {
+             ^
+Finished building: ../src/biblioteca.c
+ 
+Building file: ../src/cr_startup_lpc17.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DDEBUG -D__USE_CMSIS=CMSISv1p30_LPC17xx -D__CODE_RED -D__NEWLIB__ -I"/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_CMSISv1p30_LPC17xx/inc" -I"/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_EaBaseBoard/inc" -I"/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_MCU/inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -mcpu=cortex-m3 -mthumb -D__NEWLIB__ -MMD -MP -MF"src/cr_startup_lpc17.d" -MT"src/cr_startup_lpc17.o" -MT"src/cr_startup_lpc17.d" -o "src/cr_startup_lpc17.o" "../src/cr_startup_lpc17.c"
+Finished building: ../src/cr_startup_lpc17.c
+ 
+Building file: ../src/easyweb.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DDEBUG -D__USE_CMSIS=CMSISv1p30_LPC17xx -D__CODE_RED -D__NEWLIB__ -I"/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_CMSISv1p30_LPC17xx/inc" -I"/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_EaBaseBoard/inc" -I"/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_MCU/inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -mcpu=cortex-m3 -mthumb -D__NEWLIB__ -MMD -MP -MF"src/easyweb.d" -MT"src/easyweb.o" -MT"src/easyweb.d" -o "src/easyweb.o" "../src/easyweb.c"
+../src/easyweb.c: In function 'main':
+../src/easyweb.c:111:19: warning: implicit declaration of function 'print_uart' [-Wimplicit-function-declaration]
+         ctrl = 1, print_uart(1);
+                   ^
+../src/easyweb.c: In function 'InsertDynamicValues':
+../src/easyweb.c:207:29: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+             sprintf(NewKey, "%04d", light_read()); // insert pseudo-ADconverter value
+                             ^
+Finished building: ../src/easyweb.c
+ 
+Building file: ../src/ethmac.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DDEBUG -D__USE_CMSIS=CMSISv1p30_LPC17xx -D__CODE_RED -D__NEWLIB__ -I"/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_CMSISv1p30_LPC17xx/inc" -I"/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_EaBaseBoard/inc" -I"/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_MCU/inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -mcpu=cortex-m3 -mthumb -D__NEWLIB__ -MMD -MP -MF"src/ethmac.d" -MT"src/ethmac.o" -MT"src/ethmac.d" -o "src/ethmac.o" "../src/ethmac.c"
+Finished building: ../src/ethmac.c
+ 
+Building file: ../src/ew_systick.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DDEBUG -D__USE_CMSIS=CMSISv1p30_LPC17xx -D__CODE_RED -D__NEWLIB__ -I"/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_CMSISv1p30_LPC17xx/inc" -I"/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_EaBaseBoard/inc" -I"/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_MCU/inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -mcpu=cortex-m3 -mthumb -D__NEWLIB__ -MMD -MP -MF"src/ew_systick.d" -MT"src/ew_systick.o" -MT"src/ew_systick.d" -o "src/ew_systick.o" "../src/ew_systick.c"
+Finished building: ../src/ew_systick.c
+ 
+Building file: ../src/tcpip.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DDEBUG -D__USE_CMSIS=CMSISv1p30_LPC17xx -D__CODE_RED -D__NEWLIB__ -I"/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_CMSISv1p30_LPC17xx/inc" -I"/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_EaBaseBoard/inc" -I"/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_MCU/inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -mcpu=cortex-m3 -mthumb -D__NEWLIB__ -MMD -MP -MF"src/tcpip.d" -MT"src/tcpip.o" -MT"src/tcpip.d" -o "src/tcpip.o" "../src/tcpip.c"
+../src/tcpip.c: In function 'TCPClose':
+../src/tcpip.c:103:3: warning: enumeration value 'CLOSED' not handled in switch [-Wswitch]
+   switch (TCPStateMachine)
+   ^
+../src/tcpip.c:103:3: warning: enumeration value 'FIN_WAIT_1' not handled in switch [-Wswitch]
+../src/tcpip.c:103:3: warning: enumeration value 'FIN_WAIT_2' not handled in switch [-Wswitch]
+../src/tcpip.c:103:3: warning: enumeration value 'CLOSE_WAIT' not handled in switch [-Wswitch]
+../src/tcpip.c:103:3: warning: enumeration value 'CLOSING' not handled in switch [-Wswitch]
+../src/tcpip.c:103:3: warning: enumeration value 'LAST_ACK' not handled in switch [-Wswitch]
+../src/tcpip.c:103:3: warning: enumeration value 'TIME_WAIT' not handled in switch [-Wswitch]
+../src/tcpip.c: In function 'DoNetworkStuff':
+../src/tcpip.c:216:6: warning: suggest explicit braces to avoid ambiguous 'else' [-Wparentheses]
+   if (TCPFlags & TCP_TIMER_RUNNING)
+      ^
+../src/tcpip.c:242:3: warning: enumeration value 'SYN_SENT' not handled in switch [-Wswitch]
+   switch (TCPStateMachine)
+   ^
+../src/tcpip.c:242:3: warning: enumeration value 'FIN_WAIT_1' not handled in switch [-Wswitch]
+../src/tcpip.c:242:3: warning: enumeration value 'FIN_WAIT_2' not handled in switch [-Wswitch]
+../src/tcpip.c:242:3: warning: enumeration value 'CLOSING' not handled in switch [-Wswitch]
+../src/tcpip.c:242:3: warning: enumeration value 'LAST_ACK' not handled in switch [-Wswitch]
+../src/tcpip.c:242:3: warning: enumeration value 'TIME_WAIT' not handled in switch [-Wswitch]
+../src/tcpip.c: In function 'ProcessTCPFrame':
+../src/tcpip.c:633:9: warning: enumeration value 'CLOSED' not handled in switch [-Wswitch]
+         switch (TCPStateMachine)                 // change state if necessary
+         ^
+../src/tcpip.c:633:9: warning: enumeration value 'LISTENING' not handled in switch [-Wswitch]
+../src/tcpip.c:633:9: warning: enumeration value 'SYN_SENT' not handled in switch [-Wswitch]
+../src/tcpip.c:633:9: warning: enumeration value 'ESTABLISHED' not handled in switch [-Wswitch]
+../src/tcpip.c:633:9: warning: enumeration value 'FIN_WAIT_2' not handled in switch [-Wswitch]
+../src/tcpip.c:633:9: warning: enumeration value 'CLOSE_WAIT' not handled in switch [-Wswitch]
+../src/tcpip.c:679:9: warning: enumeration value 'CLOSED' not handled in switch [-Wswitch]
+         switch (TCPStateMachine)
+         ^
+../src/tcpip.c:679:9: warning: enumeration value 'LISTENING' not handled in switch [-Wswitch]
+../src/tcpip.c:679:9: warning: enumeration value 'SYN_SENT' not handled in switch [-Wswitch]
+../src/tcpip.c:679:9: warning: enumeration value 'CLOSE_WAIT' not handled in switch [-Wswitch]
+../src/tcpip.c:679:9: warning: enumeration value 'CLOSING' not handled in switch [-Wswitch]
+../src/tcpip.c:679:9: warning: enumeration value 'LAST_ACK' not handled in switch [-Wswitch]
+Finished building: ../src/tcpip.c
+ 
+Building target: easyweb.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -L"/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_CMSISv1p30_LPC17xx/Debug" -L"/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_EaBaseBoard/Debug" -L"/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_MCU/Debug" -Xlinker --gc-sections -Xlinker -Map=easyweb.map -mcpu=cortex-m3 -mthumb -T "rdb1768cmsis_uart_Debug.ld" -o "easyweb.axf"  ./src/biblioteca.o ./src/cr_startup_lpc17.o ./src/easyweb.o ./src/ethmac.o ./src/ew_systick.o ./src/tcpip.o   -lCMSISv1p30_LPC17xx -lLib_EaBaseBoard -lLib_MCU
+/usr/local/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/bin/ld: cannot find -lCMSISv1p30_LPC17xx
+collect2: error: ld returned 1 exit status
+makefile:30: recipe for target 'easyweb.axf' failed
+make: *** [easyweb.axf] Error 1
 
-20:54:57 Build Finished (took 408ms)
+15:53:54 Build Finished (took 863ms)
 

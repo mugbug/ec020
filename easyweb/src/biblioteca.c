@@ -36,29 +36,6 @@ static void init_ssp(void) {
 
 }
 
-static void init_uart(void) {
-	PINSEL_CFG_Type PinCfg;
-	UART_CFG_Type uartCfg;
-
-	/* Initialize UART3 pin connect */
-	PinCfg.Funcnum = 2;
-	PinCfg.Pinnum = 0;
-	PinCfg.Portnum = 0;
-	PINSEL_ConfigPin(&PinCfg);
-	PinCfg.Pinnum = 1;
-	PINSEL_ConfigPin(&PinCfg);
-
-	uartCfg.Baud_rate = 115200;
-	uartCfg.Databits = UART_DATABIT_8;
-	uartCfg.Parity = UART_PARITY_NONE;
-	uartCfg.Stopbits = UART_STOPBIT_1;
-
-	UART_Init(UART_DEV, &uartCfg);
-
-	UART_TxCmd(UART_DEV, ENABLE);
-
-}
-
 static void init_i2c(void) {
 	PINSEL_CFG_Type PinCfg;
 
@@ -108,35 +85,11 @@ void print_disp(uint8_t op, uint32_t minL, uint32_t maxL) {
 	Timer0_Wait('.');
 }
 
-void print_uart(uint8_t op) {
-	if (!op) {
-		UART_SendString(UART_DEV, (uint8_t*) "1 - Info\r\n");
-		UART_SendString(UART_DEV, (uint8_t*) "2 - Encerrar a aplicacao\r\n");
-	} else if (op) {
-		UART_SendString(UART_DEV, (uint8_t*) "\n\n\rProjeto de EC - 020\r\n");
-		UART_SendString(UART_DEV,
-				(uint8_t*) "Aplicacao desenvolvida em super-loop\r\n");
-		UART_SendString(UART_DEV,
-				(uint8_t*) "Leitura do sensor de luminosidade\r\n");
-	}
-
-}
-
 void init_all(void) {
 	init_ssp();
-	init_i2c();
-	init_uart();
-	light_enable();
+	// init_i2c();
+	// light_enable();
 	oled_init();
 	TCPLowLevelInit();
 	TCPLocalPort = TCP_PORT_HTTP;
-}
-
-void exit_(void) {
-	oled_clearScreen(OLED_COLOR_BLACK);
-	oled_putString(1, 1, (uint8_t*) "Aplicacao", OLED_COLOR_WHITE,
-			OLED_COLOR_BLACK);
-	oled_putString(1, 15, (uint8_t*) "encerrada", OLED_COLOR_WHITE,
-			OLED_COLOR_BLACK);
-	for (;;);
 }

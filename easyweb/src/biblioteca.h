@@ -19,8 +19,6 @@
 
 void init_all(void);
 void print_disp(uint8_t op, uint32_t minL, uint32_t maxL);
-void print_uart(uint8_t op);
-void exit_(void);
 
 struct config {
 	void (*init)(void);

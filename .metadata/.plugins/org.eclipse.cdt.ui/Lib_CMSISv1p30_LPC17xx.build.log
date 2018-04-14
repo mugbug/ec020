@@ -1,6 +1,13 @@
-20:54:51 **** Incremental Build of configuration Debug for project Lib_CMSISv1p30_LPC17xx ****
+15:53:44 **** Build of configuration Debug for project Lib_CMSISv1p30_LPC17xx ****
 make -r all 
-src/system_LPC17xx.d:1: *** multiple target patterns.  Stop.
+Building file: ../src/core_cm3.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DDEBUG -D__CODE_RED -D__REDLIB__ -I"/home/pedro/LPCXpresso/workspace/lpcxpresso-board-project/Lib_CMSISv1p30_LPC17xx/inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"src/core_cm3.d" -MT"src/core_cm3.o" -MT"src/core_cm3.d" -o "src/core_cm3.o" "../src/core_cm3.c"
+/tmp/ccvwJelT.s: Assembler messages:
+/tmp/ccvwJelT.s:874: Error: registers may not be the same -- `strexb r3,r2,[r3]'
+/tmp/ccvwJelT.s:926: Error: registers may not be the same -- `strexh r3,r2,[r3]'
+src/subdir.mk:21: recipe for target 'src/core_cm3.o' failed
+make: *** [src/core_cm3.o] Error 1
 
-20:54:51 Build Finished (took 358ms)
+15:53:44 Build Finished (took 458ms)
 
