@@ -77,7 +77,7 @@ static void init_i2c(void) {
 	I2C_Cmd(LPC_I2C2, ENABLE);
 }
 
-void print_disp(uint8_t op, uint32_t minL, uint32_t maxL) {
+void print_disp(uint8_t op, uint32_t minL, uint32_t maxL, struct accelerometer axis, uint8_t acc) {
 
 	uint8_t buf[50];
 
@@ -95,7 +95,6 @@ void print_disp(uint8_t op, uint32_t minL, uint32_t maxL) {
 		oled_putString(1, 50, (uint8_t*) buf, OLED_COLOR_WHITE,
 				OLED_COLOR_BLACK);
 	} else {
-
 		sprintf((char*) buf, "MAX VALUE:%d", maxL);
 		oled_putString(1, 1, (uint8_t*) buf, OLED_COLOR_WHITE,
 				OLED_COLOR_BLACK);
@@ -103,6 +102,15 @@ void print_disp(uint8_t op, uint32_t minL, uint32_t maxL) {
 		sprintf((char*) buf, "MIN VALUE:%d", minL);
 		oled_putString(1, 17, (uint8_t*) buf, OLED_COLOR_WHITE,
 				OLED_COLOR_BLACK);
+
+		sprintf((char*) buf, "ACCELEROMETER:");
+		oled_putString(1, 34, (uint8_t*) buf, OLED_COLOR_WHITE,
+				OLED_COLOR_BLACK);
+
+		sprintf((char*) buf, "X:%02d Y:%02d Z:%02d", axis.x, axis.y, axis.z);
+		oled_putString(1, 50, (uint8_t*) buf, OLED_COLOR_WHITE,
+				OLED_COLOR_BLACK);
+
 	}
 	Timer0_Wait('.');
 }
@@ -127,7 +135,9 @@ void init_all(void) {
 	init_uart();
 	light_enable();
 	rgb_init();
+	acc_init();
 	oled_init();
+	joystick_init();
 	TCPLowLevelInit();
 	TCPLocalPort = TCP_PORT_HTTP;
 }

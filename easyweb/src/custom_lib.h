@@ -17,8 +17,14 @@
 
 #include "string.h"
 
+struct accelerometer {
+		int8_t x;
+		int8_t y;
+		int8_t z;
+};
+
 void init_all(void);
-void print_disp(uint8_t op, uint32_t minL, uint32_t maxL);
+void print_disp(uint8_t op, uint32_t minL, uint32_t maxL, struct accelerometer axis, uint8_t acc);
 void print_uart(uint8_t op);
 void exit_(void);
 
