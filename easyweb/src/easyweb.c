@@ -54,11 +54,8 @@
 #include "lpc17xx_ssp.h"
 #include "oled.h"
 
-// Custom includes
+// custom lib include
 #include "custom_lib.h"
-#include "rgb.h"
-#include "acc.h"
-#include "joystick.h"
 
 // CodeRed - added for use in dynamic side of web page
 unsigned int aaPagecounter=0;
@@ -70,7 +67,6 @@ unsigned int adcValue = 0;
 
 struct config light = {
 		.init = init_all,
-		.exit = exit_,
 		.minL = 1000,
 		.maxL = 0,
 		.current = 0
@@ -87,24 +83,22 @@ int main (void) {
 	light.init();
 
 	print_disp(1, light.minL, light.maxL, axis, 0);
-	print_uart(0);
 
 	HTTPStatus = 0;                         // clear HTTP-server's flag register
 
-	uint32_t lr   = 0,
-			 read = 0;
+	uint32_t lr   = 0;
 
-	uint8_t  data = 0,
-			 btn1 = 0,
+	uint8_t  btn1 = 0,
 			 op   = 1,
 			 aux  = 0,
-			 ctrl = 0,
 			 update_acc = 0;
 
 
 	while (1){
 
+		// delay to update display with new accelerometer values
 		(update_acc <= 101) ? (update_acc++) : (update_acc = 0);
+
 		acc_read(&axis.x, &axis.y, &axis.z);
 
 		lr = light_read();
@@ -115,7 +109,7 @@ int main (void) {
 		// change RGB color according to light sensor value
 		// (lr < 300) ? rgb_setLeds(RGB_GREEN) : ((lr < 500) ? rgb_setLeds(RGB_BLUE): rgb_setLeds(RGB_RED));
 
-		// change rgb according to joystick
+		// change RGB according to joystick
 		switch (joystick_read()) {
 		case JOYSTICK_LEFT: rgb_setLeds(RGB_RED); break;
 		case JOYSTICK_RIGHT: rgb_setLeds(RGB_GREEN); break;
@@ -123,6 +117,7 @@ int main (void) {
 
 		btn1 = ((GPIO_ReadValue(0) >> 4) & 0x01);
 
+		// check if button was pressed
 		if (!btn1) {
 			op = !op;
 			print_disp(op, light.minL, light.maxL, axis, update_acc);
@@ -132,20 +127,12 @@ int main (void) {
 			print_disp(op, light.minL, light.maxL, axis, update_acc);
 		}
 
-		read = UART_Receive(UART_DEV, &data, 1, NONE_BLOCKING);
-		if ((read > 0)) {
-			if (data == '1' && !ctrl) ctrl = 1, print_uart(1);
-			if (data == '2') break;
-		}
-
 		if (!(SocketStatus & SOCK_ACTIVE))
 			TCPPassiveOpen();   // listen for incoming TCP-connection
 		DoNetworkStuff();   // handle network and easyWEB-stack
 							// events
 		HTTPServer();
 	}
-
-	light.exit();
 }
 
 // searches the TX-buffer for special strings and replaces them
@@ -161,23 +148,23 @@ void InsertDynamicValues(void) {
   
   for (i = 0; i < (TCPTxDataCount - 3); i++)
   {
-    if (*Key == 'A')
-     if (*(Key + 1) == 'D')
+    if (*Key == 'L')
+     if (*(Key + 1) == 'S')
        if (*(Key + 3) == '%')
          switch (*(Key + 2))
          {
-           case '8' :                                 // "AD8%"?
+           case '1' :                                 // "AD8%"?
            {
              sprintf(NewKey, "%04d", light.current);
              memcpy(Key, NewKey, 4);
              break;
            }
-           case '7' :                                 // "AD7%"?
+           case '2' :                                 // "AD7%"?
 		  {
 			sprintf(NewKey, "%04d", light.maxL);
 			memcpy(Key, NewKey, 4);
 			break;
-		  }case '1' :                                 // "AD1%"?
+		  }case '3' :                                 // "AD1%"?
 		  {
 			sprintf(NewKey, "%04d", light.minL);
 			memcpy(Key, NewKey, 4);

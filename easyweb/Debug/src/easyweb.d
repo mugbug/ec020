@@ -16,7 +16,6 @@ src/easyweb.o src/easyweb.d: ../src/easyweb.c ../src/easyweb.h \
  /home/pedro/Documents/dev/LPCxpresso/Lib_MCU/inc/lpc17xx_i2c.h \
  /home/pedro/Documents/dev/LPCxpresso/Lib_MCU/inc/lpc17xx_timer.h \
  /home/pedro/Documents/dev/LPCxpresso/Lib_EaBaseBoard/inc/light.h \
- /home/pedro/Documents/dev/LPCxpresso/Lib_EaBaseBoard/inc/uart2.h \
  /home/pedro/Documents/dev/LPCxpresso/Lib_EaBaseBoard/inc/rgb.h \
  /home/pedro/Documents/dev/LPCxpresso/Lib_EaBaseBoard/inc/acc.h \
  /home/pedro/Documents/dev/LPCxpresso/Lib_EaBaseBoard/inc/joystick.h
@@ -58,8 +57,6 @@ src/easyweb.o src/easyweb.d: ../src/easyweb.c ../src/easyweb.h \
 /home/pedro/Documents/dev/LPCxpresso/Lib_MCU/inc/lpc17xx_timer.h:
 
 /home/pedro/Documents/dev/LPCxpresso/Lib_EaBaseBoard/inc/light.h:
-
-/home/pedro/Documents/dev/LPCxpresso/Lib_EaBaseBoard/inc/uart2.h:
 
 /home/pedro/Documents/dev/LPCxpresso/Lib_EaBaseBoard/inc/rgb.h:
 
