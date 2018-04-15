@@ -12,15 +12,18 @@
 
 #include "light.h"
 #include "oled.h"
-#include "uart2.h"
 #include "tcpip.h"
+#include "rgb.h"
+#include "acc.h"
+#include "joystick.h"
 
 #include "string.h"
 
-void init_all(void);
-void print_disp(uint8_t op, uint32_t minL, uint32_t maxL);
-void print_uart(uint8_t op);
-void exit_(void);
+struct accelerometer {
+		int8_t x;
+		int8_t y;
+		int8_t z;
+};
 
 struct config {
 	void (*init)(void);
@@ -29,5 +32,8 @@ struct config {
 	uint32_t maxL;
 	uint32_t current;
 };
+
+void init_all(void);
+void print_disp(uint8_t op, uint32_t minL, uint32_t maxL, struct accelerometer axis, uint8_t acc);
 
 #endif

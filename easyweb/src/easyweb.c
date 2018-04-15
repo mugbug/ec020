@@ -54,8 +54,7 @@
 #include "lpc17xx_ssp.h"
 #include "oled.h"
 
-// Custom includes
-#include "rgb.h"
+// custom lib include
 #include "custom_lib.h"
 
 // CodeRed - added for use in dynamic side of web page
@@ -65,61 +64,67 @@ unsigned int adcValue = 0;
 #define switch_oled_value(x) ({x = lr; aux = 1;})
 
 // Custom functions
-void delay(int time) {
-
-}
 
 struct config light = {
 		.init = init_all,
-		.exit = exit_,
 		.minL = 1000,
 		.maxL = 0,
 		.current = 0
 };
 
-int main (void) {
+struct accelerometer axis = {
+		.x = 0,
+		.y = 0,
+		.z = 0
+};
 
+int main (void) {
 
 	light.init();
 
-	print_disp(1, light.minL, light.maxL);
-	print_uart(0);
+	print_disp(1, light.minL, light.maxL, axis, 0);
 
 	HTTPStatus = 0;                         // clear HTTP-server's flag register
 
-	uint32_t lr   = 0,
-			 read = 0;
+	uint32_t lr   = 0;
 
-	uint8_t  data = 0,
-			 btn1 = 0,
+	uint8_t  btn1 = 0,
 			 op   = 1,
 			 aux  = 0,
-			 ctrl = 0;
+			 update_acc = 0;
 
 
 	while (1){
 
-		rgb_setLeds(RGB_RED);
+		// delay to update display with new accelerometer values
+		(update_acc <= 101) ? (update_acc++) : (update_acc = 0);
+
+		acc_read(&axis.x, &axis.y, &axis.z);
+
 		lr = light_read();
 		light.current = lr;
 
 		(lr < light.minL) ? (switch_oled_value(light.minL)) : ((lr > light.maxL) ? (switch_oled_value(light.maxL)) : (aux = 0));
 
+		// change RGB color according to light sensor value
+		// (lr < 300) ? rgb_setLeds(RGB_GREEN) : ((lr < 500) ? rgb_setLeds(RGB_BLUE): rgb_setLeds(RGB_RED));
+
+		// change RGB according to joystick
+		switch (joystick_read()) {
+		case JOYSTICK_LEFT: rgb_setLeds(RGB_RED); break;
+		case JOYSTICK_RIGHT: rgb_setLeds(RGB_GREEN); break;
+		}
+
 		btn1 = ((GPIO_ReadValue(0) >> 4) & 0x01);
 
+		// check if button was pressed
 		if (!btn1) {
 			op = !op;
-			print_disp(op, light.minL, light.maxL);
+			print_disp(op, light.minL, light.maxL, axis, update_acc);
 		}
 
-		if (!op && aux) {
-			print_disp(op, light.minL, light.maxL);
-		}
-
-		read = UART_Receive(UART_DEV, &data, 1, NONE_BLOCKING);
-		if ((read > 0)) {
-			if (data == '1' && !ctrl) ctrl = 1, print_uart(1);
-			if (data == '2') break;
+		if (!op && (aux || update_acc == 100)) {
+			print_disp(op, light.minL, light.maxL, axis, update_acc);
 		}
 
 		if (!(SocketStatus & SOCK_ACTIVE))
@@ -128,17 +133,7 @@ int main (void) {
 							// events
 		HTTPServer();
 	}
-
-	light.exit();
 }
-
-// This function implements a very simple dynamic HTTP-server.
-// It waits until connected, then sends a HTTP-header and the
-// HTML-code stored in memory. Before sending, it replaces
-// some special strings with dynamic values.
-// NOTE: For strings crossing page boundaries, replacing will
-// not work. In this case, simply add some extra lines
-// (e.g. CR and LFs) to the HTML-code.
 
 // searches the TX-buffer for special strings and replaces them
 // with dynamic values (AD-converter results)
@@ -153,25 +148,25 @@ void InsertDynamicValues(void) {
   
   for (i = 0; i < (TCPTxDataCount - 3); i++)
   {
-    if (*Key == 'A')
-     if (*(Key + 1) == 'D')
+    if (*Key == 'L')
+     if (*(Key + 1) == 'S')
        if (*(Key + 3) == '%')
          switch (*(Key + 2))
          {
-           case '8' :                                 // "AD8%"?
+           case '1' :                                 // "AD8%"?
            {
-             sprintf(NewKey, "%d", light.current);
+             sprintf(NewKey, "%04d", light.current);
              memcpy(Key, NewKey, 4);
              break;
            }
-           case '7' :                                 // "AD7%"?
+           case '2' :                                 // "AD7%"?
 		  {
-			sprintf(NewKey, "%d", light.maxL);
+			sprintf(NewKey, "%04d", light.maxL);
 			memcpy(Key, NewKey, 4);
 			break;
-		  }case '1' :                                 // "AD1%"?
+		  }case '3' :                                 // "AD1%"?
 		  {
-			sprintf(NewKey, "%d", light.minL);
+			sprintf(NewKey, "%04d", light.minL);
 			memcpy(Key, NewKey, 4);
 			break;
 		  }
@@ -180,6 +175,13 @@ void InsertDynamicValues(void) {
   }
 }
 
+// This function implements a very simple dynamic HTTP-server.
+// It waits until connected, then sends a HTTP-header and the
+// HTML-code stored in memory. Before sending, it replaces
+// some special strings with dynamic values.
+// NOTE: For strings crossing page boundaries, replacing will
+// not work. In this case, simply add some extra lines
+// (e.g. CR and LFs) to the HTML-code.
 void HTTPServer(void)
 {
   if (SocketStatus & SOCK_CONNECTED)             // check if somebody has connected to our TCP

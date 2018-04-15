@@ -14,8 +14,10 @@ src/custom_lib.o src/custom_lib.d: ../src/custom_lib.c \
  /home/pedro/Documents/dev/LPCxpresso/Lib_MCU/inc/lpc17xx_gpio.h \
  /home/pedro/Documents/dev/LPCxpresso/Lib_EaBaseBoard/inc/light.h \
  /home/pedro/Documents/dev/LPCxpresso/Lib_EaBaseBoard/inc/oled.h \
- /home/pedro/Documents/dev/LPCxpresso/Lib_EaBaseBoard/inc/uart2.h \
- ../src/tcpip.h
+ ../src/tcpip.h \
+ /home/pedro/Documents/dev/LPCxpresso/Lib_EaBaseBoard/inc/rgb.h \
+ /home/pedro/Documents/dev/LPCxpresso/Lib_EaBaseBoard/inc/acc.h \
+ /home/pedro/Documents/dev/LPCxpresso/Lib_EaBaseBoard/inc/joystick.h
 
 ../src/custom_lib.h:
 
@@ -47,6 +49,10 @@ src/custom_lib.o src/custom_lib.d: ../src/custom_lib.c \
 
 /home/pedro/Documents/dev/LPCxpresso/Lib_EaBaseBoard/inc/oled.h:
 
-/home/pedro/Documents/dev/LPCxpresso/Lib_EaBaseBoard/inc/uart2.h:
-
 ../src/tcpip.h:
+
+/home/pedro/Documents/dev/LPCxpresso/Lib_EaBaseBoard/inc/rgb.h:
+
+/home/pedro/Documents/dev/LPCxpresso/Lib_EaBaseBoard/inc/acc.h:
+
+/home/pedro/Documents/dev/LPCxpresso/Lib_EaBaseBoard/inc/joystick.h:
