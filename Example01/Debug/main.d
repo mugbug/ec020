@@ -12,7 +12,20 @@ main.o main.d: ../main.c \
  /home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/FreeRTOS_Library/include/mpu_wrappers.h \
  /home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/FreeRTOS_Library/include/task.h \
  /home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/FreeRTOS_Library/include/list.h \
- /home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/FreeRTOS_Library/demo_code/basic_io.h
+ /home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/FreeRTOS_Library/demo_code/basic_io.h \
+ ../custom_lib.h \
+ /home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/Lib_MCU/inc/lpc17xx_ssp.h \
+ /home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/Lib_MCU/inc/lpc_types.h \
+ /home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/Lib_MCU/inc/lpc17xx_pinsel.h \
+ /home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/Lib_MCU/inc/lpc17xx_uart.h \
+ /home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/Lib_MCU/inc/lpc17xx_i2c.h \
+ /home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/Lib_MCU/inc/lpc17xx_timer.h \
+ /home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/Lib_MCU/inc/lpc17xx_gpio.h \
+ /home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/Lib_EaBaseBoard/inc/light.h \
+ /home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/Lib_EaBaseBoard/inc/oled.h \
+ /home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/Lib_EaBaseBoard/inc/rgb.h \
+ /home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/Lib_EaBaseBoard/inc/acc.h \
+ /home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/Lib_EaBaseBoard/inc/joystick.h
 
 /home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/FreeRTOS_Library/include/FreeRTOS.h:
 
@@ -41,3 +54,29 @@ main.o main.d: ../main.c \
 /home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/FreeRTOS_Library/include/list.h:
 
 /home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/FreeRTOS_Library/demo_code/basic_io.h:
+
+../custom_lib.h:
+
+/home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/Lib_MCU/inc/lpc17xx_ssp.h:
+
+/home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/Lib_MCU/inc/lpc_types.h:
+
+/home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/Lib_MCU/inc/lpc17xx_pinsel.h:
+
+/home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/Lib_MCU/inc/lpc17xx_uart.h:
+
+/home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/Lib_MCU/inc/lpc17xx_i2c.h:
+
+/home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/Lib_MCU/inc/lpc17xx_timer.h:
+
+/home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/Lib_MCU/inc/lpc17xx_gpio.h:
+
+/home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/Lib_EaBaseBoard/inc/light.h:
+
+/home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/Lib_EaBaseBoard/inc/oled.h:
+
+/home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/Lib_EaBaseBoard/inc/rgb.h:
+
+/home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/Lib_EaBaseBoard/inc/acc.h:
+
+/home/pedro/Documents/dev/LPCxpresso/lpcxpresso-board-project/Lib_EaBaseBoard/inc/joystick.h:

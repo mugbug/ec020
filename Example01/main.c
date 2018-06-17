@@ -36,6 +36,7 @@
 
 /* Demo includes. */
 #include "basic_io.h"
+#include "custom_lib.h"
 
 /* Used as a loop counter to create a very crude delay. */
 #define mainDELAY_LOOP_COUNT		( 0xfffff )
@@ -50,8 +51,31 @@ unsigned long counter = 0;
 xTaskHandle xHandle_1;
 xTaskHandle xHandle_2;
 
-int main( void )
-{
+struct config light = {
+		.init = init_all,
+		.minL = 1000,
+		.maxL = 0,
+		.current = 0
+};
+
+struct accelerometer axis = {
+		.x = 0,
+		.y = 0,
+		.z = 0
+};
+
+uint8_t  btn1 = 0,
+		 op   = 1,
+		 aux  = 0,
+		 update_acc = 0;
+int main (void) {
+
+	light.init();
+
+	print_disp(1, light.minL, light.maxL, axis, 0);
+
+	uint32_t lr   = 0;
+
 	/* Init the semi-hosting. */
 	printf( "\n" );
 
@@ -85,18 +109,16 @@ volatile unsigned long ul;
 	/* As per most tasks, this task is implemented in an infinite loop. */
 	for( ;; )
 	{
-		if (counter >= 10) {
-			vTaskDelete(NULL);
-		}
-		counter += 1;
+		btn1 = ((GPIO_ReadValue(0) >> 4) & 0x01);
 
+		// check if button was pressed
+		if (!btn1) {
+			op = !op;
+			print_disp(op, counter, light.maxL, axis, update_acc);
+			counter += 1;
+		}
 		/* Print out the name of this task. */
 		vPrintStringAndNumber( pcTaskName, counter);
-
-		/* Delay for a period. */
-		vTaskDelay( 200 / portTICK_RATE_MS );
-
-		if (counter >= 60) vTaskResume(xHandle_2);
 	}
 }
 /*-----------------------------------------------------------*/
