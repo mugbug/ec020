@@ -48,8 +48,7 @@ void vTask2( void *pvParameters );
 /*-----------------------------------------------------------*/
 
 unsigned long counter = 0;
-xTaskHandle xHandle_1;
-xTaskHandle xHandle_2;
+xQueueHandle oled_queue;
 
 struct config light = {
 		.init = init_all,
@@ -68,11 +67,26 @@ uint8_t  btn1 = 0,
 		 op   = 1,
 		 aux  = 0,
 		 update_acc = 0;
+
+/* ------------------------------------------*/
+
+#define INPUT 	0
+#define OUTPUT	1
+
+#define DEFAULT_PORT	0
+#define DEFAULT_PIN		4
+
+void Button_init(void)
+{
+	GPIO_SetDir( DEFAULT_PORT, DEFAULT_PIN, INPUT);
+
+	xTaskCreate( taskButton, "Button", 192, NULL, 1, NULL );
+}
+
+/* ------------------------------------------*/
 int main (void) {
 
 	light.init();
-
-	print_disp(1, light.minL, light.maxL, axis, 0);
 
 	uint32_t lr   = 0;
 
@@ -84,7 +98,7 @@ int main (void) {
 					"Task 1",	/* Text name for the task.  This is to facilitate debugging only. */
 					240,		/* Stack depth in words. */
 					NULL,		/* We are not using the task parameter. */
-					1,			/* This task will run at priority 1. */
+					2,			/* This task will run at priority 1. */
 					&xHandle_1 );		/* We are not using the task handle. */
 
 	/* Create the other task in exactly the same way. */
@@ -101,10 +115,13 @@ int main (void) {
 }
 /*-----------------------------------------------------------*/
 
-void vTask1( void *pvParameters )
-{
-const char *pcTaskName = "\nTask 1; counter =";
-volatile unsigned long ul;
+void taskButton( void *pvParameters ) {
+
+}
+
+void vTask1( void *pvParameters ) {
+	const char *pcTaskName = "\nTask 1; counter =";
+	volatile unsigned long ul;
 
 	/* As per most tasks, this task is implemented in an infinite loop. */
 	for( ;; )
@@ -114,11 +131,15 @@ volatile unsigned long ul;
 		// check if button was pressed
 		if (!btn1) {
 			op = !op;
+			vPortEnterCritical();
 			print_disp(op, counter, light.maxL, axis, update_acc);
+			vPortExitCritical();
+			vTaskDelay(10);
 			counter += 1;
 		}
 		/* Print out the name of this task. */
 		vPrintStringAndNumber( pcTaskName, counter);
+		//vTaskDelay( 250 / portTICK_RATE_MS );
 	}
 }
 /*-----------------------------------------------------------*/
