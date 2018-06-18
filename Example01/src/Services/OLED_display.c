@@ -137,13 +137,14 @@ void initDisplayAccordingToJoystick() {
 
 		OLED_display_clearScreen();
 		OLED_display_putString( 1, 1, (uint8_t*) "** VEM P10 **" );
-		OLED_display_putString( 1, 17, (uint8_t*) "Alexandre M" );
-		OLED_display_putString( 1, 25, (uint8_t*) "Pedro Z" );
-		OLED_display_putString( 1, 33, (uint8_t*) "Tiago P" );
-		OLED_display_putString( 1, 41, (uint8_t*) "Rodrigo H" );
+		OLED_display_putString( 1, 17, (uint8_t*) "Alexandre Miz." );
+		OLED_display_putString( 1, 29, (uint8_t*) "Pedro Zaroni" );
+		OLED_display_putString( 1, 41, (uint8_t*) "Tiago Pitaluga" );
+		OLED_display_putString( 1, 53, (uint8_t*) "Rodrigo Maciel" );
 
 		vPortExitCritical();
 	}
+	data.should_init_display = false;
 }
 
 void printInfoOnDisplay() {
@@ -192,7 +193,7 @@ void printInfoOnDisplay() {
 
 void OLED_display_writerTask( void *pvParameters )
 {
-
+	data.joystick_state = JOYSTICK_RIGHT;
 	while(1)
 	{
 		if (!data.ready) {
@@ -239,6 +240,7 @@ void OLED_display_updaterTask( void *pvParameters )
 				case JOY:
 					xSemaphoreTake(data_semaphr, blockTime);
 					data.joystick_state = msg.payload[0];
+					data.should_init_display = msg.payload[1];
 					xSemaphoreGive(data_semaphr);
 				default:
 					break;

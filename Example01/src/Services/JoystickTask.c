@@ -33,13 +33,14 @@ bool canUpdateJoystickState(uint8_t joystick_state) {
 
 void Joystick_readerTask( void *pvParameters ) {
 	message_t msg;
-
+	bool joystick_state_changed = true;
 	while (1) {
 		memset(&msg, 0x00, sizeof(msg));
 		msg.source = JOY;
 		msg.payload[0] = joystick_read();
 
 		if (tx_callback != NULL && canUpdateJoystickState(msg.payload[0])) {
+			msg.payload[1] = joystick_state_changed;
 			tx_callback(msg);
 		}
 		vTaskDelay( 400 / portTICK_RATE_MS );

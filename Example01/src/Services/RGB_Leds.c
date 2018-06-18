@@ -37,9 +37,9 @@ void RGB_Leds_init (void)
 {
 	rgb_init();
 
-	RGB_Leds_setLeds(0);
+	RGB_Leds_setLeds(RGB_LEDS_RED);
 
-	RGB_Leds_Instance.on = true;
+	RGB_Leds_Instance.on = false;
 	RGB_Leds_Instance.y = INVALID;
 	RGB_Leds_Instance.threshold = INVALID;
 
@@ -59,6 +59,14 @@ void RGB_Leds_setCallback(callback_t c)
 void RGB_Leds_setLeds (uint8_t ledMask)
 {
 	rgb_setLeds(ledMask);
+}
+
+void updateRGBColor() {
+	if (RGB_Leds_Instance.on) {
+		RGB_Leds_setLeds(RGB_LEDS_GREEN);
+	} else {
+		RGB_Leds_setLeds(RGB_LEDS_RED);
+	}
 }
 
 void RGB_Leds_updaterTask( void *pvParameters )
@@ -88,9 +96,7 @@ void RGB_Leds_updaterTask( void *pvParameters )
 					msg_out.source = RGB;
 					msg_out.payload[0] = RGB_Leds_Instance.on;
 					tx_callback( msg_out );
-					RGB_Leds_setLeds(RGB_LEDS_GREEN);
-				} else {
-					RGB_Leds_setLeds(RGB_LEDS_RED);
+					updateRGBColor();
 				}
 			}
 		}
